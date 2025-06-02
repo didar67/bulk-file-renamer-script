@@ -25,7 +25,8 @@ def organize_files_by_extension(folder_path):
             print(" The folder is empty.")
             return
 
-        moved_files_count = 0
+        moved_files_count = 0  # NEW: Count of moved files
+
 
         for file_name in files:
             # Skip hidden files
@@ -56,14 +57,16 @@ def organize_files_by_extension(folder_path):
                 # Move the file
                 shutil.move(full_file_path, os.path.join(target_folder, new_name))
                 logging.info(f" Moved: {file_name} → {target_folder}/{new_name}")
-                moved_files_count += 1
+                moved_files_count += 1  # NEW: Count updated
 
         print(f"\n {moved_files_count} file(s) have been organized by extension.")
-        print(f" Log file saved as: {log_filename}\n")
+        print(f" Log file saved as: {log_filename}\n") # NEW: Log file info
+
 
     except Exception as e:
         logging.exception("An error occurred while organizing files.")
-        print(f"Error: {e}")
+        print(f"Error: {e}")  # UPDATED: Error print is cleaner
+
 
 # CLI Setup
 def main():
